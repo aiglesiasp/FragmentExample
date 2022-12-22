@@ -11,7 +11,7 @@ import androidx.fragment.app.viewModels
 import com.aiglesiaspubill.fragmentexample.R
 import com.aiglesiaspubill.fragmentexample.databinding.FragmentMainBinding
 
-class MainFragment(val text: String) : Fragment() {
+class MainFragment(private val text: String) : Fragment() {
 
     companion object {
         fun newInstance() = MainFragment("Prueba")
