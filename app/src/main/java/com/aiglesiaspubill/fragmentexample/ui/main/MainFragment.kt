@@ -11,10 +11,10 @@ import androidx.fragment.app.viewModels
 import com.aiglesiaspubill.fragmentexample.R
 import com.aiglesiaspubill.fragmentexample.databinding.FragmentMainBinding
 
-class MainFragment : Fragment() {
+class MainFragment(val text: String) : Fragment() {
 
     companion object {
-        fun newInstance() = MainFragment()
+        fun newInstance() = MainFragment("Prueba")
     }
 
     private val viewModel : MainViewModel by viewModels()
@@ -30,6 +30,7 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.message.text = text
         //TODO: Es Aqui donde desarrollamos lamayor parte del codigo
     }
 

@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(binding.container.id, MainFragment.newInstance())
+                .replace(binding.container.id, MainFragment("Pasando un String"))
                 .commitNow()
         }
     }
