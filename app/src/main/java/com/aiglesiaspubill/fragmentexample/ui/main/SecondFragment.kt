@@ -11,31 +11,23 @@ import androidx.fragment.app.viewModels
 import com.aiglesiaspubill.fragmentexample.ActivityCallback
 import com.aiglesiaspubill.fragmentexample.R
 import com.aiglesiaspubill.fragmentexample.databinding.FragmentMainBinding
+import com.aiglesiaspubill.fragmentexample.databinding.FragmentSecondBinding
 
-class MainFragment(private val text: String) : Fragment() {
-
-    companion object {
-        fun newInstance() = MainFragment("Prueba")
-    }
+class SecondFragment() : Fragment() {
 
     private val viewModel : MainViewModel by viewModels()
-    private lateinit var binding: FragmentMainBinding
+    private lateinit var binding: FragmentSecondBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentMainBinding.inflate(inflater)
+        binding = FragmentSecondBinding.inflate(inflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.message.setText(text)
-        binding.root.setOnClickListener {
-            var callback = activity as? ActivityCallback
-            callback?.onTextPressed(binding.message.text.toString())
-        }
         //TODO: Es Aqui donde desarrollamos lamayor parte del codigo
     }
 

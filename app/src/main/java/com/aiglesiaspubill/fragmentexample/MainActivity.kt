@@ -4,8 +4,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.aiglesiaspubill.fragmentexample.databinding.ActivityMainBinding
 import com.aiglesiaspubill.fragmentexample.ui.main.MainFragment
+import com.aiglesiaspubill.fragmentexample.ui.main.SecondFragment
 
-class MainActivity : AppCompatActivity() {
+interface ActivityCallback {
+    fun onTextPressed(text: String)
+}
+
+class MainActivity : AppCompatActivity() , ActivityCallback {
 
     private  lateinit var binding : ActivityMainBinding
 
@@ -15,9 +20,25 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         if (savedInstanceState == null) {
+            val fragment = MainFragment("Pasando un String")
             supportFragmentManager.beginTransaction()
-                .replace(binding.container.id, MainFragment("Pasando un String"))
+                .replace(binding.container.id, fragment)
+                .addToBackStack("bbb")
                 .commitNow()
         }
+
+        //AL PULSAR EL BOTON CAMBIA DE FRAGMEN
+        binding.btnButton.setOnClickListener {
+            val fragment = SecondFragment()
+            supportFragmentManager.beginTransaction()
+                .replace(binding.container.id, fragment)
+                    //Para volver atras
+                .addToBackStack("aaa")
+                .commitNow()
+        }
+    }
+
+    override fun onTextPressed(text: String) {
+        binding.btnButton.text = text
     }
 }
