@@ -23,7 +23,6 @@ class MainActivity : AppCompatActivity() , ActivityCallback {
             val fragment = MainFragment("Pasando un String")
             supportFragmentManager.beginTransaction()
                 .replace(binding.container.id, fragment)
-                .addToBackStack("bbb")
                 .commitNow()
         }
 
@@ -32,8 +31,6 @@ class MainActivity : AppCompatActivity() , ActivityCallback {
             val fragment = SecondFragment()
             supportFragmentManager.beginTransaction()
                 .replace(binding.container.id, fragment)
-                    //Para volver atras
-                .addToBackStack("aaa")
                 .commitNow()
         }
     }
